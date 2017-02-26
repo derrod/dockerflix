@@ -15,6 +15,7 @@ services:
       - 8.8.4.4
     volumes:
       - /etc/localtime:/etc/localtime:ro
+      - ./config/dockerflix-sniproxy.conf:/etc/sniproxy/sniproxy.conf:ro
       - ./tmp/config:/config
     environment:
       OPENVPN_PROVIDER: example

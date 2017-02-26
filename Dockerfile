@@ -27,7 +27,7 @@ RUN apt-get -y install python-software-properties \
 
 # Create runit services
 RUN mkdir /etc/sniproxy
-ADD ./config/dockerflix-sniproxy.conf /etc/sniproxy/sniproxy.conf
+# ADD ./config/dockerflix-sniproxy.conf /etc/sniproxy/sniproxy.conf
 RUN mkdir /etc/service/sniproxy
 ADD ./config/run_sniproxy /etc/service/sniproxy/run
 RUN chmod +x /etc/service/sniproxy/run

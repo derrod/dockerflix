@@ -9,6 +9,15 @@ Main difference to Dockerflix is that this uses OpenVPN to tunnel all proxied re
 
 Currently it doesn't have the UK configuration from the original dockerflix but I might add it in the future.
 
+# ToDo
+* Add bind or dnsmasq server for even easier setup (maybe see https://github.com/elie195/dockerflix)
+* Also share vpn config dirs with host to avoid having to rebuild for an update?
+    * Sharing the file works fine for sniproxy config, easy on the fly edits etc.
+* Import some rules from https://github.com/ab77/netflix-proxy? (e.g. ntflxvideo)
+* Add vrv.co properly (e.g. do not redirect CDN urls as there is no geoblocking)
+* Add exceptions for non-geoblocked CDNs (e.g. *.ak.crunchyroll.com) to avoid sending unnecessary data over the VPN
+* Add UK stuff back but handle it differently (e.g. environment variable or something like that)
+
 ## Getting started:
 * `git clone https://github.com/derrod/dockerflix-openvpn.git`
 * Edit VPN settings in `docker-compose.yml`

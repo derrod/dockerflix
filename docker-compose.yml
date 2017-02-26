@@ -1,8 +1,9 @@
 version: '2'
 services:
-  dockerflix-sniproxy-openvpn:
+  dockerflix-openvpn:
     build: .
-    container_name: dockerflix
+    container_name: dockerflix-openvpn
+    image: derrod/dockerflix-openvpn
     privileged: true
     restart: always
     ports:

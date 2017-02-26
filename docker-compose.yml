@@ -1,15 +1,24 @@
-us:
-  build: .
-  dockerfile: dockerflix.us
-  ports:
-  - "80:80"
-  - "443:443"
-  restart: always
-  
-uk:
-  build: .
-  dockerfile: dockerflix.uk
-  ports:
-  - "80:80"
-  - "443:443"
-  restart: always
+version: '2'
+services:
+  dockerflix-sniproxy-openvpn:
+    build: .
+    container_name: dockerflix
+    privileged: true
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "1022:22"
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./tmp/config:/config
+    environment:
+      OPENVPN_PROVIDER: example
+      OPENVPN_USERNAME: ""
+      OPENVPN_PASSWORD: ""
+      OPENVPN_OPTS: "--inactive 3600 --ping 10 --ping-exit 60"
+      OPENVPN_CONFIG: example
+      LOCAL_NETWORK: 10.0.0.0/24
